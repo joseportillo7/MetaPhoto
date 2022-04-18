@@ -1,17 +1,11 @@
 const express = require("express")
-const Services = require("./service")
+const { PhotosController } = require("./controller")
 
 const router = express.Router()
 
 module.exports.PhotosAPI = (app) => {
     router
-        .get('/1', (req, res) => {
-            res.json({
-                message: 'Hello MetaPhoto application',
-                body: Services.getPhotos()
-            })
-        })
-        .get('/:id', (req, res) => {})
+        .get('/', PhotosController.getPhotos)
 
     app.use('/api/photos', router)
 }

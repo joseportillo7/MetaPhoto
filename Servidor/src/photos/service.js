@@ -1,40 +1,24 @@
-//archivo encargado de realizar la logica de los datos
+/*archivo encargado de realizar la logica de los datos*/
 
-const photos = [{
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "https://via.placeholder.com/600/92c952",
-    "thumbnailUrl": "https://via.placeholder.com/150/92c952",
-    "album": {
-        "id": 1,
-        "title": "quidem molestiae enim",
-        "user": {
-            "id": 1,
-            "name": "Leanne Graham",
-            "username": "Bret",
-            "email": "Sincere@april.biz",
-            "address": {
-                "street": "Kulas Light",
-                "suite": "Apt. 556",
-                "city": "Gwenborough",
-                "zipcode": "92998-3874",
-                "geo": {
-                    "lat": "-37.3159",
-                    "lng": "81.1496"
-                }
-            },
-            "phone": "1-770-736-8031 x56442",
-            "website": "hildegard.org",
-            "company": {
-                "name": "Romaguera-Crona",
-                "catchPhrase": "Multi-layered client-server neural-net",
-                "bs": "harness real-time e-markets"
-            }
-        }
-    }
+const axios = require("axios");
 
-}]
 
-module.exports = {
-    getPhotos: () => photos,
+const DataPhotos = async() => {
+
+    //En esta parte simularemos un cliente para que vaya a realizar la peticion http a la url indicada con el metodo get
+    let response = await axios.get("https://jsonplaceholder.typicode.com/photos");
+
+    /**
+     * luego almacenamos esta informacion dentro de la siguiente variable "data" que es la que almacena 
+     * la informacion que necesitamos, por esa razon se hace una destructuracion
+     */
+    let { data } = response;
+
+    //se hara el recorrido
+    //let recorrido = data.map((item) => item)
+    return data
+}
+
+module.exports.PhotoService = {
+    DataPhotos
 }
