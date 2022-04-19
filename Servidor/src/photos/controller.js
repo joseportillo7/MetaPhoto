@@ -6,8 +6,8 @@ module.exports.PhotosController = {
     getPhotos: async(req, res) => {
         try {
             let photos = await PhotoService.DataPhotos(req.params.id)
-            let albums = await AlbumService.DataAlbums(req.params.id)
-            let users = await UserService.DataUsers(req.params.id)
+            let albums = await AlbumService.DataAlbums(photos.albumId)
+            let users = await UserService.DataUsers(albums.userId)
             res.json({
                 "id": photos.id,
                 "title": photos.title,
