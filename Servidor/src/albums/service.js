@@ -4,7 +4,7 @@ const DataAlbums = async(idalbum) => {
     let response = await axios.get("https://jsonplaceholder.typicode.com/albums");
     let { data } = response;
 
-    let albums = data.filter((album) => {
+    let albums = data.find((album) => {
         if (idalbum == album.id) {
             console.log("estoy en el if del service");
             return album

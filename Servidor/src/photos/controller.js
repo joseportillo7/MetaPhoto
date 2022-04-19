@@ -9,9 +9,17 @@ module.exports.PhotosController = {
             let albums = await AlbumService.DataAlbums(req.params.id)
             let users = await UserService.DataUsers(req.params.id)
             res.json({
-                photos,
-                albums,
-                users
+                "id": photos.id,
+                "title": photos.title,
+                "url": photos.url,
+                "tumbnailUrl": photos.tumbnailUrl,
+                "album": {
+                    "id": albums.id,
+                    "title": albums.title,
+                    "user": {
+                        ...users
+                    }
+                }
             })
         } catch (error) {
             console.log(error);

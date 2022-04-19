@@ -12,7 +12,7 @@ const DataPhotos = async(parametro) => {
     let { data: dataphoto } = responsephoto;
 
     //se hara el recorrido en el que por cada foto me topare con un id de album que este a su vez deberia traerme la info de un usuario    
-    let photos = dataphoto.filter((photo) => {
+    let photos = dataphoto.find((photo) => {
 
         if (photo.id == parametro) {
             return photo
