@@ -29,7 +29,8 @@ module.exports.PhotosController = {
 
     getTitleAlbum: async(req, res) => {
         try {
-            let title = await PhotoService.TitleAlbumPhotos(req.query.album)
+
+            //let title = await PhotoService.TitleAlbumPhotos(req.query.album)
 
             res.json({
                 ...title

@@ -15,14 +15,15 @@ const TitlePhotos = async(parametro) => {
 }
 
 const TitleAlbumPhotos = async(parametro) => {
-        console.log("si entre");
-        return Arreglo.filter((photo) => photo.album.title.includes(parametro))
-    }
-    /**
-     * Funcion que se encarga de alimentar el arreglo para poder realizar las peticiones directamente
-     * a dicho arreglo y no tener que consultar las API expuestas en cada peticion realizada
-     * esto redujo el tiempo de respuesta en las peticiones realizadas.
-     */
+    return Arreglo.filter((photo) => photo.album.title.includes(parametro))
+}
+
+
+/**
+ * Funcion que se encarga de alimentar el arreglo para poder realizar las peticiones directamente
+ * a dicho arreglo y no tener que consultar las API expuestas en cada peticion realizada
+ * esto redujo el tiempo de respuesta en las peticiones realizadas.
+ */
 const ArregloPrincipal = async() => {
     try {
         let dataphotos = await RequestService.DataPhotos() //trae las 5000 photos

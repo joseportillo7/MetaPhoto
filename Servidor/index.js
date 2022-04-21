@@ -13,7 +13,8 @@ PhotosAPI(app)
  * Se realiza la ejecucion de la funcion, esto con el fin
  * de poder alimentar el arreglo y que se consulten las API's expuestas
  */
-PhotoService.ArregloPrincipal()
+PhotoService.ArregloPrincipal() //buscar como ejecutarse cada cierto tiempo
+
 
 app.listen(Config.port, () => {
     console.log(`Servidor escuchando en el puerto en http://localhost:${Config.port}`);
