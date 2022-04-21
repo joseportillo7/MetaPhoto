@@ -6,8 +6,7 @@
  module.exports.PhotosAPI = (app) => {
      router
          .get('/:id', PhotosController.getPhotos)
-         .get('', PhotosController.getTitlePhoto)
-         .get('', PhotosController.getTitleAlbum)
+         .get('', PhotosController.getParams)
 
      app.use('/api/MetaPhoto/photos', router)
  }

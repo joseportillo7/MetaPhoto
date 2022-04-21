@@ -9,13 +9,41 @@ const DataPhotos = async(parametro) => {
     return Arreglo.find((photo) => photo.id.toString() === parametro)
 }
 
+const Filtering = async(req) => {
+
+    let query = {
+        "title": req["title"], //repudiandae iusto
+        "album.title": req["album.title"], //quidem
+        "album.user.email": req["album.user.email"] //"Sincere@april.biz"
+    }
+
+    let arreglofiltrado = Arreglo
+
+    if (query["title"]) {
+        arreglofiltrado = await TitlePhotos(query["title"])
+    }
+    if (query["album.title"]) {
+        arreglofiltrado = await TitleAlbums(query["album.title"], arreglofiltrado)
+    }
+    if (query["album.user.email"]) {
+        arreglofiltrado = await EmailUser(query["album.user.email"], arreglofiltrado)
+    }
+
+    return arreglofiltrado
+}
+
+
 //Funcion que retorna los titulos que coincidan con el parametro enviado
 const TitlePhotos = async(parametro) => {
     return Arreglo.filter((photo) => photo.title.includes(parametro))
 }
 
-const TitleAlbumPhotos = async(parametro) => {
-    return Arreglo.filter((photo) => photo.album.title.includes(parametro))
+const TitleAlbums = (parametro, arreglofiltrado) => {
+    return arreglofiltrado.filter((item) => item.album.title.includes(parametro))
+}
+
+const EmailUser = (parametro, arreglofiltrado) => {
+    return arreglofiltrado.filter((item) => item.album.user.email.includes(parametro))
 }
 
 
@@ -64,7 +92,6 @@ const ArregloPrincipal = async() => {
 
 module.exports.PhotoService = {
     DataPhotos,
-    TitlePhotos,
-    TitleAlbumPhotos,
+    Filtering,
     ArregloPrincipal
 }
