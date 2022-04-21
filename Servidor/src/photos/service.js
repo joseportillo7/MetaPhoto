@@ -9,14 +9,26 @@ const DataPhotos = async(parametro) => {
     return Arreglo.find((photo) => photo.id.toString() === parametro)
 }
 
+/**
+ * Funcion que se encarga de retornar el arreglo filtrado segun 
+ * los parametros enviados
+ */
 const Filtering = async(req) => {
 
+    /**
+     * Se crea un diccionario y se le asigna el valor a cada clave de
+     * los posibles filtros que se mencionan o solicitan.
+     */
     let query = {
         "title": req["title"], //repudiandae iusto
         "album.title": req["album.title"], //quidem
         "album.user.email": req["album.user.email"] //"Sincere@april.biz"
     }
 
+    /**
+     * Se crea la variable arreglofiltrado y se le asiga el arreglo 
+     * principal que es el que contiene toda la informacion.
+     */
     let arreglofiltrado = Arreglo
 
     if (query["title"]) {
@@ -33,15 +45,27 @@ const Filtering = async(req) => {
 }
 
 
-//Funcion que retorna los titulos que coincidan con el parametro enviado
+/**
+ * Funcion que retorna las fotos que coincidan con el parametro enviado
+ * siendo este un filtro que incluya el titulo de la foto
+ */
 const TitlePhotos = async(parametro) => {
     return Arreglo.filter((photo) => photo.title.includes(parametro))
 }
 
+
+/**
+ * Funcion que retorna las fotos que coincidan con el parametro enviado
+ * siendo este un filtro que incluya el titulo del album
+ */
 const TitleAlbums = (parametro, arreglofiltrado) => {
     return arreglofiltrado.filter((item) => item.album.title.includes(parametro))
 }
 
+/**
+ * Funcion que retorna las fotos que coincidan con el parametro enviado
+ * siendo este un filtro que incluya el email del usuario
+ */
 const EmailUser = (parametro, arreglofiltrado) => {
     return arreglofiltrado.filter((item) => item.album.user.email.includes(parametro))
 }
