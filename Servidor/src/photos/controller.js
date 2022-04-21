@@ -17,7 +17,6 @@ module.exports.PhotosController = {
     getParams: async(req, res) => {
         try {
             let title = await PhotoService.Filtering(req.query)
-
             res.json({
                 ...title
             })

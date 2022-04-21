@@ -22,7 +22,9 @@ const Filtering = async(req) => {
     let query = {
         "title": req["title"], //repudiandae iusto
         "album.title": req["album.title"], //quidem
-        "album.user.email": req["album.user.email"] //"Sincere@april.biz"
+        "album.user.email": req["album.user.email"], //"Sincere@april.biz"
+        "limit": Number(req["limit"]), //default = 25
+        "offset": Number(req["offset"]) //default = 0
     }
 
     /**
@@ -40,6 +42,11 @@ const Filtering = async(req) => {
     if (query["album.user.email"]) {
         arreglofiltrado = await EmailUser(query["album.user.email"], arreglofiltrado)
     }
+    if (query["limit"] & query["offset"]) {
+        arreglofiltrado = await LimitArray(query["limit"], query["offset"], arreglofiltrado)
+    } else {
+        arreglofiltrado = await LimitArray(25, 0, arreglofiltrado)
+    }
 
     return arreglofiltrado
 }
@@ -52,7 +59,6 @@ const Filtering = async(req) => {
 const TitlePhotos = async(parametro) => {
     return Arreglo.filter((photo) => photo.title.includes(parametro))
 }
-
 
 /**
  * Funcion que retorna las fotos que coincidan con el parametro enviado
@@ -68,6 +74,14 @@ const TitleAlbums = (parametro, arreglofiltrado) => {
  */
 const EmailUser = (parametro, arreglofiltrado) => {
     return arreglofiltrado.filter((item) => item.album.user.email.includes(parametro))
+}
+
+const LimitArray = (limit, offset, arreglofiltrado) => {
+    let limitarray
+    for (let i = 0; i <= limit; i++) {
+        limitarray = arreglofiltrado.slice(offset, limit + offset)
+    }
+    return limitarray
 }
 
 
