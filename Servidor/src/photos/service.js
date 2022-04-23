@@ -48,7 +48,7 @@ const Filtering = async(req) => {
         arreglofiltrado = await LimitArray(25, 0, arreglofiltrado)
     }
 
-    return arreglofiltrado
+    return {arreglofiltrado}
 }
 
 

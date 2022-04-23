@@ -17,9 +17,9 @@ module.exports.PhotosController = {
     getParams: async(req, res) => {
         try {
             let title = await PhotoService.Filtering(req.query)
-            res.json({
-                ...title
-            })
+            res.json(
+                title
+            )
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: "Internal server error" })

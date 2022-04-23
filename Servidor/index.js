@@ -2,9 +2,11 @@ const express = require('express')
 const { Config } = require("./src/config")
 const { PhotosAPI } = require("./src/photos")
 const { PhotoService } = require("./src/photos/service")
+const cors = require('cors')
 
 const app = express()
 
+app.use(cors());
 app.use(express.json())
 
 PhotosAPI(app)
