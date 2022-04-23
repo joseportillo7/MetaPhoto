@@ -1,29 +1,33 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Photos from './Components/Photos' 
 
 function App() {
 
  const [info, setInfo] = useState([]);
 
-    useEffect(() => {
-      
+    /**
+     * Agregando funcion fetch para realizar la peticion a la
+     * API expuesta de MetaPhoto
+     */
+    const peticionPhotos = () =>{
         fetch("http://localhost:5000/api/MetaPhoto/photos?album.title=quidem")        
         .then( response => response.json())
-        .then( data => {
-            console.log(data)
-            setInfo(data)           
+        .then( data => {            
+            setInfo(data.arreglofiltrado)           
         })
-        .catch( error => console.log(error))
+        .catch( error => console.log(error))   
+    }
     
-      return () => {
-      }
+    useEffect(() => {
+      peticionPhotos()               
     }, [])
     
     return (
-        <div>
-            {                                
-                info.arreglofiltrado.map((element) => ( <div>{element.title}</div>) )
-            }            
+        <>
+        <div className="container">
+            <Photos  photos = {info} / >
         </div>
+        </>
     );
 }
 
