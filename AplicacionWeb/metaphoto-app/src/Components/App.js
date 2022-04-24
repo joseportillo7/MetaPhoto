@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Photos from './Components/Photos' 
+import {Photos} from './Photos' 
 
-function App() {
+export function App() {
 
  const [info, setInfo] = useState([]);
 
@@ -24,11 +24,9 @@ function App() {
     
     return (
         <>
-        <div className="container">
+        <div className="container mt-5" >
             <Photos  photos = {info} / >
         </div>
         </>
     );
 }
-
-export default App;
