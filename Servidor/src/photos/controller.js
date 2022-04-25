@@ -6,7 +6,7 @@ module.exports.PhotosController = {
             let dataphotos = await PhotoService.DataPhotos(req.params.id)
 
             res.json({
-                ...dataphotos
+                dataphotos
             })
         } catch (error) {
             console.log(error);

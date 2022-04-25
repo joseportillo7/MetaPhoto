@@ -44,7 +44,8 @@ const Filtering = async(req) => {
     }
     if (query["limit"] & query["offset"]) {
         arreglofiltrado = await LimitArray(query["limit"], query["offset"], arreglofiltrado)
-    } else {
+    }  
+    if  (!(query["limit"] & query["offset"])){
         arreglofiltrado = await LimitArray(25, 0, arreglofiltrado)
     }
 

@@ -5,15 +5,15 @@ export const PhotoCard = ({ photo }) => {
     <div className="col mb-5">
       <div className="card">
         <img 
-        width= {300}
+        width= {350}
         height={300}        
         src={photo.url} alt={photo.title} 
         />
         <div className="card-body">
-          <h2 className="card-title">{photo.title}</h2>
-          <hr />
+          <h5 className="card-title">{photo.id +" - "+ photo.title}</h5>          
           <p>Album: {photo.album.title}</p>
           <p>User: {photo.album.user.name}</p>
+          <p>Email: {photo.album.user.email}</p>
         </div>
       </div>
     </div>
