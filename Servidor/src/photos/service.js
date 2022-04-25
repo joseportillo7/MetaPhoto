@@ -42,12 +42,16 @@ const Filtering = async(req) => {
     if (query["album.user.email"]) {
         arreglofiltrado = await EmailUser(query["album.user.email"], arreglofiltrado)
     }
-    if (query["limit"] & query["offset"]) {
-        arreglofiltrado = await LimitArray(query["limit"], query["offset"], arreglofiltrado)
-    }  
-    if  (!(query["limit"] & query["offset"])){
+    if (query["limit"]) {
+        if(query["offset"]){
+            arreglofiltrado = await LimitArray(query["limit"], query["offset"], arreglofiltrado)
+        }else{
+            arreglofiltrado = await LimitArray(query["limit"], 0, arreglofiltrado)
+        }        
+    }else{
         arreglofiltrado = await LimitArray(25, 0, arreglofiltrado)
-    }
+    }  
+    
 
     return {arreglofiltrado}
 }
