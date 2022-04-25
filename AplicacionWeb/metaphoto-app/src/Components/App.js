@@ -23,14 +23,14 @@ export function App() {
     limit,
     offset
   ) => {
-    let url = `http://localhost:5000/api/MetaPhoto/photos?${titlePhoto}${titleAlbum}${email}${limit}${offset}`          
+    let url = `http://18.117.223.82:5000/api/MetaPhoto/photos?${titlePhoto}${titleAlbum}${email}${limit}${offset}`
     console.log(url);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setInfo(data.arreglofiltrado);
       })
-      .catch((error) => console.log(error));              
+      .catch((error) => console.log(error));            
   };
 
   useEffect(() => {
