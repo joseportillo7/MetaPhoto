@@ -23,7 +23,7 @@ export function App() {
     limit,
     offset
   ) => {
-    let url = `http://ec2-18-117-223-82.us-east-2.compute.amazonaws.com:5000/api/MetaPhoto/photos?${titlePhoto}${titleAlbum}${email}${limit}${offset}`
+    let url = `http://3.142.136.77:5000/api/MetaPhoto/photos?${titlePhoto}${titleAlbum}${email}${limit}${offset}`
     console.log(url);
     fetch(url)
       .then((response) => response.json())
