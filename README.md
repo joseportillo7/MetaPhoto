@@ -27,8 +27,8 @@ npm start
 npm run dev
 
 
-#Para correr el proyecto desde la URL del navegador se debe colocar lo siguiente
-http://ec2-54-146-155-58.compute-1.amazonaws.com:3000/api/MetaPhoto/photos?
+#Para correr el proyecto desde la URL del navegador se debe colocar la siguiente IP
+http://54.146.155.58/
 
 
 
